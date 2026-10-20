@@ -1,0 +1,5 @@
+{
+  "description": "Proveedor B: autenticacion basica, schema anidado, montos '1.234,50', fechas DD/MM/YYYY o YYYYMMDD, sin impuestos, p95 3 s con picos de 8 s",
+  "auth": {"type": "basic", "header": "authorization"},
+  "default_scenario": "slow"
+}

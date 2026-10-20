@@ -1,0 +1,12 @@
+{
+  "latency_ms": 200,
+  "status": 200,
+  "body": {
+    "success": false,
+    "status": "ERROR",
+    "error": {
+      "code": "INVALID_DESTINATION",
+      "message": "Unknown city"
+    }
+  }
+}

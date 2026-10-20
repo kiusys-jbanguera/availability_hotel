@@ -1,0 +1,57 @@
+{
+  "latency_ms": 400,
+  "status": 200,
+  "body": {
+    "success": true,
+    "status": "OK",
+    "errors": [],
+    "data": {
+      "city": "{{body.city_code}}",
+      "results": [
+        {
+          "hotel": {
+            "id": "C-77",
+            "name": "Hotel Bacata"
+          },
+          "room": {
+            "code": "STD",
+            "description": "Estandar"
+          },
+          "price": {
+            "amount": "98.40",
+            "currency": "USD",
+            "taxes": "included"
+          }
+        },
+        {
+          "hotel": {
+            "id": "C-78",
+            "name": "Hotel Usaquen Boutique"
+          },
+          "room": {
+            "code": "DLX",
+            "description": "Deluxe king"
+          },
+          "price": {
+            "amount": "156.00",
+            "currency": "USD",
+            "taxes": "included"
+          }
+        },
+        {
+          "hotel": {
+            "id": "C-79"
+          },
+          "room": {
+            "code": "FAM"
+          },
+          "price": {
+            "amount": "201.75",
+            "currency": "USD",
+            "taxes": "included"
+          }
+        }
+      ]
+    }
+  }
+}

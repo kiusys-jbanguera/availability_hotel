@@ -1,0 +1,10 @@
+{
+  "latency_ms": 500,
+  "status": 500,
+  "body": {
+    "Respuesta": {
+      "Codigo": "99",
+      "Mensaje": "Error interno"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "latency_ms": 200,
+  "status": 500,
+  "body": {
+    "message": "Internal Server Error"
+  }
+}

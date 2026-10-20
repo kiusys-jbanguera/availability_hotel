@@ -1,0 +1,12 @@
+{
+  "latency_ms": 250,
+  "status": 200,
+  "body": {
+    "success": false,
+    "status": "ERROR",
+    "error": {
+      "code": "INTERNAL_ERROR",
+      "message": "Upstream failure"
+    }
+  }
+}

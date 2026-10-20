@@ -1,0 +1,11 @@
+{
+  "latency_ms": 900,
+  "status": 200,
+  "body": {
+    "Respuesta": {
+      "Codigo": "00",
+      "Mensaje": "Sin disponibilidad",
+      "Hoteles": {}
+    }
+  }
+}

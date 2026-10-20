@@ -1,0 +1,11 @@
+{
+  "latency_ms": 300,
+  "status": 200,
+  "body": {
+    "success": true,
+    "status": "OK",
+    "data": {
+      "results": []
+    }
+  }
+}

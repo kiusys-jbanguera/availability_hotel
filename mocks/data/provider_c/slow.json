@@ -1,0 +1,27 @@
+{
+  "latency_ms": 1500,
+  "status": 200,
+  "body": {
+    "success": true,
+    "status": "OK",
+    "data": {
+      "results": [
+        {
+          "hotel": {
+            "id": "C-77",
+            "name": "Hotel Bacata"
+          },
+          "room": {
+            "code": "STD",
+            "description": "Estandar"
+          },
+          "price": {
+            "amount": "98.40",
+            "currency": "USD",
+            "taxes": "included"
+          }
+        }
+      ]
+    }
+  }
+}

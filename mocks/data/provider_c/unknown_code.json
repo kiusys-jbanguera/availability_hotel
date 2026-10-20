@@ -1,0 +1,12 @@
+{
+  "latency_ms": 250,
+  "status": 200,
+  "body": {
+    "success": false,
+    "status": "ERROR",
+    "error": {
+      "code": "QUOTA_EXHAUSTED_XYZ",
+      "message": "Unexpected"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "latency_ms": 350,
+  "status": 200,
+  "body": {
+    "success": false,
+    "status": "ERROR",
+    "error": {
+      "code": "NO_AVAILABILITY",
+      "message": "No rooms for the requested stay"
+    }
+  }
+}
