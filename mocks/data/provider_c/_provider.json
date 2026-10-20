@@ -1,0 +1,5 @@
+{
+  "description": "Proveedor C: API key en x-api-key, errores de negocio dentro de HTTP 200",
+  "auth": {"type": "api_key", "header": "x-api-key"},
+  "default_scenario": "ok"
+}

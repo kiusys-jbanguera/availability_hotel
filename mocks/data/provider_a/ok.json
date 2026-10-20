@@ -1,0 +1,15 @@
+{
+  "latency_ms": 250,
+  "status": 200,
+  "body": {
+    "request_id": "a-7f3c9e",
+    "destination": "{{query.destination}}",
+    "currency": "USD",
+    "offers": [
+      {"hotel_code": "HC-001", "hotel_name": "Hotel Central", "room_code": "DBL-STD", "room_name": "Doble estandar", "total_price": 119.00, "taxes_included": true, "board": "RO", "cancellation": "FREE_UNTIL_48H"},
+      {"hotel_code": "HC-002", "hotel_name": "Hotel Parque 93", "room_code": "SGL", "room_name": "Sencilla", "total_price": 89.50, "taxes_included": true, "board": "BB", "cancellation": "NON_REFUNDABLE"},
+      {"hotel_code": "HC-003", "hotel_name": "Hotel Candelaria Real", "room_code": "STE", "room_name": "Suite", "total_price": 245.99, "taxes_included": true, "board": "HB", "cancellation": "FREE_UNTIL_24H"},
+      {"hotel_code": "HC-004", "room_code": "TWN", "total_price": 132.40, "taxes_included": true}
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "latency_ms": 300,
+  "status": 200,
+  "body": {
+    "success": true,
+    "status": "OK",
+    "errors": [
+      {
+        "code": "INVALID_DESTINATION"
+      }
+    ],
+    "data": {
+      "results": []
+    }
+  }
+}

@@ -1,0 +1,79 @@
+# Entorno local completo (HU-S02 RF-08): API + mocks JSON de A/B/C + LocalStack.
+# Escenarios de los mocks sin reconstruir: MOCK_SCENARIO_A/B/C y
+# MOCK_LATENCY_MS_A/B/C al levantar, o `PUT /_mock/scenario` en caliente.
+
+x-mock: &mock
+  build:
+    context: .
+    target: mock
+  restart: unless-stopped
+
+services:
+  app:
+    build:
+      context: .
+      target: runtime
+    image: availability-hotel:local
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    environment:
+      APP_ENV: local
+      AWS_ENDPOINT_URL: http://localstack:4566
+      AWS_DEFAULT_REGION: us-east-1
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      PORT: "8000"
+      PROVIDER_A_BASE_URL: http://mock-provider-a:9000
+      PROVIDER_B_BASE_URL: http://mock-provider-b:9000
+      PROVIDER_C_BASE_URL: http://mock-provider-c:9000
+    depends_on:
+      localstack:
+        condition: service_healthy
+      mock-provider-a:
+        condition: service_healthy
+      mock-provider-b:
+        condition: service_healthy
+      mock-provider-c:
+        condition: service_healthy
+
+  mock-provider-a:
+    <<: *mock
+    environment:
+      MOCK_PROVIDER: provider_a
+      MOCK_SCENARIO: ${MOCK_SCENARIO_A:-}
+      MOCK_LATENCY_MS: ${MOCK_LATENCY_MS_A:-}
+    ports:
+      - "9001:9000"
+
+  mock-provider-b:
+    <<: *mock
+    environment:
+      MOCK_PROVIDER: provider_b
+      MOCK_SCENARIO: ${MOCK_SCENARIO_B:-}
+      MOCK_LATENCY_MS: ${MOCK_LATENCY_MS_B:-}
+    ports:
+      - "9002:9000"
+
+  mock-provider-c:
+    <<: *mock
+    environment:
+      MOCK_PROVIDER: provider_c
+      MOCK_SCENARIO: ${MOCK_SCENARIO_C:-}
+      MOCK_LATENCY_MS: ${MOCK_LATENCY_MS_C:-}
+    ports:
+      - "9003:9000"
+
+  localstack:
+    image: localstack/localstack:4.9@sha256:59373b4a27dba3ec15c4db0b7455f0cb68c8a42300e2cbbe362b440f9a131697
+    environment:
+      SERVICES: secretsmanager
+      AWS_DEFAULT_REGION: us-east-1
+    ports:
+      - "${LOCALSTACK_PORT:-4566}:4566"
+    volumes:
+      - ./docker/localstack/init-secrets.sh:/etc/localstack/init/ready.d/init-secrets.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "awslocal secretsmanager describe-secret --secret-id provider/c >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s

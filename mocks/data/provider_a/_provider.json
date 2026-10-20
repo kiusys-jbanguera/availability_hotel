@@ -1,0 +1,7 @@
+{
+  "description": "Proveedor A: REST/JSON plano, API key en x-api-key, idempotency-key obligatorio, 10 req/s, p95 250 ms",
+  "auth": {"type": "api_key", "header": "x-api-key"},
+  "required_headers": ["idempotency-key"],
+  "rate_limit": {"requests": 10, "per_seconds": 1},
+  "default_scenario": "ok"
+}

@@ -1,0 +1,10 @@
+{
+  "latency_ms": 300,
+  "status": 401,
+  "body": {
+    "Respuesta": {
+      "Codigo": "401",
+      "Mensaje": "Credenciales invalidas"
+    }
+  }
+}

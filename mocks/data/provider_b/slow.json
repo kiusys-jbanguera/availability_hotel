@@ -1,0 +1,120 @@
+{
+  "_comment": "p95 de B: 3 s, supera el corte de 2 s",
+  "latency_ms": 3000,
+  "status": 200,
+  "body": {
+    "Respuesta": {
+      "Codigo": "00",
+      "Mensaje": "OK",
+      "Destino": "{{body.Consulta.CodigoDestino}}",
+      "Hoteles": {
+        "Hotel": [
+          {
+            "Codigo": "B-BOG-123",
+            "Nombre": "Hotel Andino Plaza",
+            "Categoria": "4*",
+            "Habitaciones": {
+              "Habitacion": [
+                {
+                  "Codigo": "JRS",
+                  "Descripcion": "Suite Junior",
+                  "Tarifas": {
+                    "Tarifa": [
+                      {
+                        "Plan": "SA",
+                        "Periodo": {
+                          "Desde": "{{body.Consulta.Estancia.Entrada}}",
+                          "Hasta": "{{body.Consulta.Estancia.Salida}}"
+                        },
+                        "Importe": {
+                          "Valor": "1.234,50",
+                          "Divisa": "COP",
+                          "ImpuestosIncluidos": "N"
+                        }
+                      },
+                      {
+                        "Plan": "AD",
+                        "Periodo": {
+                          "Desde": "{{body.Consulta.Estancia.Entrada}}",
+                          "Hasta": "{{body.Consulta.Estancia.Salida}}"
+                        },
+                        "Importe": {
+                          "Valor": "1.399,00",
+                          "Divisa": "COP",
+                          "ImpuestosIncluidos": "N"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Codigo": "DBL",
+                  "Descripcion": "Doble superior",
+                  "Tarifas": {
+                    "Tarifa": {
+                      "Plan": "SA",
+                      "Periodo": {
+                        "Desde": "{{body.Consulta.Estancia.Entrada}}",
+                        "Hasta": "{{body.Consulta.Estancia.Salida}}"
+                      },
+                      "Importe": {
+                        "Valor": "980,00",
+                        "Divisa": "COP",
+                        "ImpuestosIncluidos": "N"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Codigo": "B-BOG-456",
+            "Nombre": "Hotel Chico Norte",
+            "Habitaciones": {
+              "Habitacion": {
+                "Codigo": "STD",
+                "Descripcion": "Estandar",
+                "Tarifas": {
+                  "Tarifa": [
+                    {
+                      "Plan": "SA",
+                      "Periodo": {
+                        "Desde": "{{body.Consulta.Estancia.Entrada}}",
+                        "Hasta": "{{body.Consulta.Estancia.Salida}}"
+                      },
+                      "Importe": {
+                        "Valor": "455,90",
+                        "Divisa": "COP",
+                        "ImpuestosIncluidos": "N"
+                      }
+                    },
+                    {
+                      "Plan": "SA",
+                      "Periodo": {
+                        "Desde": "{{body.Consulta.Estancia.Entrada}}",
+                        "Hasta": "{{body.Consulta.Estancia.Salida}}"
+                      }
+                    },
+                    {
+                      "Plan": "SA",
+                      "Periodo": {
+                        "Desde": "31-31-2026",
+                        "Hasta": "{{body.Consulta.Estancia.Salida}}"
+                      },
+                      "Importe": {
+                        "Valor": "500,00",
+                        "Divisa": "COP",
+                        "ImpuestosIncluidos": "N"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

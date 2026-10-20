@@ -1,0 +1,80 @@
+# Configuracion declarativa de proveedores (HU-S03).
+# Nunca contiene valores de secretos: solo `auth.secret_id` (Secrets Manager).
+# Los strings admiten `${VAR:-defecto}` para variar URLs entre local y compose.
+
+[search]
+# Presupuesto global de la consulta (HU003 RF-02, HU-S03 RF-07).
+timeout_s = 2.0
+# Limite global de concurrencia (HU003 DC-02) y tamano del pool HTTP.
+max_concurrency = 1000
+max_connections = 100
+
+[[providers]]
+id = "provider_a"
+enabled = true
+adapter = "provider_a"
+base_url = "${PROVIDER_A_BASE_URL:-http://localhost:9001}"
+timeout_s = 2.0
+
+[providers.auth]
+type = "api_key"
+header = "x-api-key"
+secret_id = "provider/a"
+
+[providers.rate_limit]
+enabled = true
+requests = 10
+per_seconds = 1
+safety_margin_s = 0.1
+
+[providers.billing]
+cost_per_request = "0.0050"
+
+[[providers]]
+id = "provider_b"
+enabled = true
+adapter = "provider_b"
+base_url = "${PROVIDER_B_BASE_URL:-http://localhost:9002}"
+timeout_s = 2.0
+
+[providers.auth]
+type = "basic"
+secret_id = "provider/b"
+
+[providers.pricing]
+taxes_included = false
+tax_rate = "0.19"
+
+[providers.parsing]
+date_formats = ["%d/%m/%Y", "%Y%m%d"]
+
+[providers.parsing.amount]
+thousands_sep = "."
+decimal_sep = ","
+
+[[providers]]
+id = "provider_c"
+enabled = true
+adapter = "provider_c"
+base_url = "${PROVIDER_C_BASE_URL:-http://localhost:9003}"
+
+[providers.auth]
+type = "api_key"
+header = "x-api-key"
+secret_id = "provider/c"
+
+[providers.business_errors]
+code_paths = ["error.code", "errors.0.code"]
+rules = [
+    { path = "success", op = "equals", value = false },
+    { path = "error", op = "not_empty" },
+    { path = "errors", op = "not_empty" },
+    { path = "status", op = "not_equals", value = "OK" },
+]
+
+[providers.business_errors.codes]
+NO_AVAILABILITY = "no_availability"
+INVALID_DATES = "query"
+INVALID_DESTINATION = "query"
+INVALID_KEY = "auth"
+INTERNAL_ERROR = "internal"
